@@ -9,20 +9,20 @@ import { Repository } from 'typeorm';
 export class UserService {
   constructor(
     @InjectRepository(UserEntity)
-    private readonly userRpository: Repository<UserEntity>,
+    private readonly userRepository: Repository<UserEntity>,
   ) {}
 
   async createUser(createUserDto: CreateUserDto): Promise<UserEntity> {
     const saltOrRouds = 10;
     const passwordHashed = await hash(createUserDto.password, saltOrRouds);
 
-    return this.userRpository.save({
+    return this.userRepository.save({
       ...createUserDto,
       password: passwordHashed,
     });
   }
 
   async getAllUser(): Promise<UserEntity[]> {
-    return this.userRpository.find();
+    return this.userRepository.find();
   }
 }
