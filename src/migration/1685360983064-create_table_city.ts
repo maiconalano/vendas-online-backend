@@ -7,6 +7,7 @@ export class CreateTableCity1685360983064 implements MigrationInterface {
                 id integer NOT NULL,
                 state_id integer NOT NULL,
                 name character varying NOT NULL,
+                ibge integer,
                 created_at timestamp without time zone DEFAULT now() NOT NULL,
                 updated_at timestamp without time zone DEFAULT now() NOT NULL,
                 primary key (id),
